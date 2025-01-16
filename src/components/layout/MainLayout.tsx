@@ -1,10 +1,9 @@
-import { Layout, Menu } from "antd";
-const { Header, Sider, Content } = Layout;
-import { Footer } from "antd/es/layout/layout";
+import { Button, Layout } from "antd";
+const { Header, Content } = Layout;
 import { Outlet } from "react-router-dom";
-import { adminPaths, adminSidebarItems } from "../../routes/admin.routes";
-import { sidebarItemsGenerator } from "../../utils/sidebarItemsGenerator";
 import Sidebar from "./Sidebar";
+import { useAppDispatch } from "../../redux/hooks";
+import { logout } from "../../redux/features/auth/authSlice";
 // const items: MenuProps["items"] = [
 //   {
 //     key: "Dashboard",
@@ -30,11 +29,17 @@ import Sidebar from "./Sidebar";
 //   },
 // ];
 const MainLayout = () => {
+  const dispatch = useAppDispatch();
+  const handleLogout = () => {
+    dispatch(logout());
+  };
   return (
     <Layout>
       <Sidebar></Sidebar>
       <Layout>
-        <Header style={{ padding: 0 }} />
+        <Header>
+          <Button onClick={handleLogout}>Logout</Button>
+        </Header>
         <Content style={{ margin: "24px 16px 0" }}>
           <div
             style={{
