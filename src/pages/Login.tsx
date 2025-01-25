@@ -13,6 +13,10 @@ import Password from "antd/es/input/Password";
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const defaultValues = {
+    userId: "A-0001",
+    password: "admin123",
+  };
   // const { register, handleSubmit } = useForm({
   //   defaultValues: {
   //     userId: " ",
@@ -43,7 +47,7 @@ const Login = () => {
   };
   return (
     <Row justify="center" align="middle" style={{ height: "100vh" }}>
-      <PHform onSubmit={onSubmit}>
+      <PHform onSubmit={onSubmit} defaultValues={defaultValues}>
         <PHinput type="text" name="userId" label="Id" />
         <PHinput type="text" name="password" label="Password" />
         <Button htmlType="submit">Login</Button>
